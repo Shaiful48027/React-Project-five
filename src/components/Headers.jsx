@@ -1,15 +1,20 @@
 import React, { useContext } from 'react';
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import { AuthContext } from '../providers/AuthProvider';
 
 
 
 const Headers = () => {
 
-    const { user } = useContext(AuthContext);
+    const { user, signOutUser } = useContext(AuthContext);
 
- 
-    
+    const handleSignout = () => {
+        signOutUser()
+            .then(() => {
+                console.log('user sign out successfully');
+            })
+            .catch(error => console.log('error', error.message))
+    }
 
     const links = <>
         <div className='flex gap-10'>
@@ -17,12 +22,7 @@ const Headers = () => {
             <NavLink to="/login">login</NavLink>
             <NavLink to="/register">register</NavLink>
         </div>
-
-
-
-
     </>
-
 
     return (
         <div className="navbar bg-base-100 mb-10">
@@ -54,7 +54,14 @@ const Headers = () => {
                 {links}
             </div>
             <div className="navbar-end">
-                <a className="btn">{user?.email}</a>
+                {
+                    user ?
+                        <>
+                            <span>{user.email}</span>
+                            <a onClick={handleSignout} className='btn'>Sign Out</a>
+                        </>
+                        : <Link to="/login">Login</Link>
+                }
             </div>
         </div>
     );

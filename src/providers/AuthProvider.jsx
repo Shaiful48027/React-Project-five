@@ -1,39 +1,36 @@
 import { createContext, useEffect, useState } from "react";
 import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../firebase.init";
+import { signOut } from "firebase/auth";
 
 export const AuthContext = createContext(null);
 
-const AuthProvider = ({children}) => {
+const AuthProvider = ({ children }) => {
 
     const [user, setUser] = useState(null)
 
-    const createUser = (email, password) =>{
+    const createUser = (email, password) => {
         return createUserWithEmailAndPassword(auth, email, password);
     }
 
-    const signinUser = (email, password) =>{
-        return signInWithEmailAndPassword (auth, email, password)
+    const signinUser = (email, password) => {
+        return signInWithEmailAndPassword(auth, email, password)
     }
 
+    const signOutUser = () => {
+        return signOut(auth);
+    }
 
-    con
-
-
-
-
-
-    useEffect( () =>{
-        const unsubscribe = onAuthStateChanged (auth, currentUser => {
-            console.log('current user', currentUser);
+    useEffect(() => {
+        const unsubscribe = onAuthStateChanged(auth, currentUser => {
             setUser(currentUser);
         })
 
-        return()=>{
+        return () => {
             unsubscribe();
         }
 
-    },[])
+    }, [])
 
 
     // onAuthStateChanged(auth, currentUser =>{
@@ -51,12 +48,13 @@ const AuthProvider = ({children}) => {
         name,
         user,
         signinUser,
-        createUser
+        createUser,
+        signOutUser
     }
 
 
     return (
-        <AuthContext.Provider value = {authInfo}>
+        <AuthContext.Provider value={authInfo}>
             {children}
         </AuthContext.Provider>
     );
