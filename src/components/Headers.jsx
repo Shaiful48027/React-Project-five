@@ -24,6 +24,8 @@ const Headers = () => {
             {
                 user && <>
                     <NavLink to="/order">Orders</NavLink>
+                    <NavLink to="/profile">Profile</NavLink>
+                    
                 </>
             }
         </div>

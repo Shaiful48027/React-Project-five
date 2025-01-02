@@ -14,6 +14,7 @@ import Root2 from './components/Root2.jsx';
 import AuthProvider from './providers/AuthProvider.jsx';
 import Order from './components/Order.jsx';
 import PrivetRout from './routes/PrivetRout.jsx';
+import Profile from './components/Profile.jsx';
 
 const router = new createBrowserRouter([
   {
@@ -35,6 +36,10 @@ const router = new createBrowserRouter([
       {
         path: ('/order'),
         element: <PrivetRout><Order></Order></PrivetRout>
+      },
+      {
+        path: ('/profile'),
+        element: <PrivetRout><Profile></Profile></PrivetRout>
       }
     ]
   },
