@@ -32,7 +32,6 @@ const AuthProvider = ({ children }) => {
 
     }, [])
 
-
     // onAuthStateChanged(auth, currentUser =>{
     //     if(currentUser){
     //         console.log('currently logged user', currentUser);
@@ -51,7 +50,6 @@ const AuthProvider = ({ children }) => {
         createUser,
         signOutUser
     }
-
 
     return (
         <AuthContext.Provider value={authInfo}>

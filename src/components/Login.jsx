@@ -6,22 +6,22 @@ import { AuthContext } from '../providers/AuthProvider';
 
 const Login = () => {
 
-    const {signinUser} = useContext(AuthContext)
+    const { signinUser } = useContext(AuthContext)
 
-    const handlelogin = e =>{
+    const handlelogin = e => {
         e.preventDefault();
         const email = e.target.email.value;
         const password = e.target.password.value;
 
-        signinUser(email, password )
-        .then(result =>{
-            console.log(result.user);
-            
-        })
-        .catch(error =>{
-            console.log("error", error.message);
-            
-        })
+        signinUser(email, password)
+            .then(result => {
+                console.log(result.user);
+
+            })
+            .catch(error => {
+                console.log("error", error.message);
+
+            })
     }
     return (
         <div className="hero bg-base-200 min-h-screen">
@@ -36,13 +36,13 @@ const Login = () => {
                             <label className="label">
                                 <span className="label-text">Email</span>
                             </label>
-                            <input type="email" placeholder="email" className="input input-bordered" name="email"/>
+                            <input type="email" placeholder="email" className="input input-bordered" name="email" />
                         </div>
                         <div className="form-control">
                             <label className="label">
                                 <span className="label-text">Password</span>
                             </label>
-                            <input type="password" className="input input-bordered" name="password"/>
+                            <input type="password" className="input input-bordered" name="password" />
                             <label className="label">
                                 <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
                             </label>

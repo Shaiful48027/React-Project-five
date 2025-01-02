@@ -4,7 +4,7 @@ import { AuthContext } from "../providers/AuthProvider";
 
 const Register = () => {
 
-    const {createUser} = useContext(AuthContext)
+    const { createUser } = useContext(AuthContext)
 
     const handleRegister = e => {
         e.preventDefault();
@@ -36,7 +36,7 @@ const Register = () => {
                             <label className="label">
                                 <span className="label-text">Name</span>
                             </label>
-                            <input type="text" placeholder="name" className="input input-bordered" name="name"/>
+                            <input type="text" placeholder="name" className="input input-bordered" name="name" />
                         </div>
                         <div className="form-control">
                             <label className="label">
